@@ -8,7 +8,8 @@ The paper deployed 6 LLM agents with real tools (shell, email, Discord, memory) 
 
 We rebuilt two of the paper's case studies as a small, safe simulation and ran each attack **30 times × 8 setups × 4 models = 960 tries**, scored automatically in code.
 
-- **Live demo:** *add the Vercel URL here after deploying*
+- **Live demo:** <https://chaos-lab-psi.vercel.app/> (paper replays: [`#cs8`](https://chaos-lab-psi.vercel.app/#cs8), [`#cs3`](https://chaos-lab-psi.vercel.app/#cs3) · our results: [`#exp`](https://chaos-lab-psi.vercel.app/#exp))
+- **Code and data:** <https://github.com/prith27/chaos-lab>
 - **Paper:** <https://arxiv.org/abs/2602.20021> · full Discord logs: <https://agentsofchaos.baulab.info/>
 
 ---
@@ -46,7 +47,8 @@ We rebuilt two of the paper's case studies as a small, safe simulation and ran e
 | [`paper_deep_dive/`](paper_deep_dive/) | Paper notes: [`index.md`](paper_deep_dive/index.md) (start here), a 5–10 min [`tldr.md`](paper_deep_dive/tldr.md), a long explainer, our [`critique.md`](paper_deep_dive/critique.md), and diagrams. |
 | [`plan/`](plan/) | Talk plan ([`ppt_plan.md`](plan/ppt_plan.md)), demo and experiment plan, and Q&A prep. |
 | [`experiments.md`](experiments.md) | The original specification the experiment was built from (frozen before the run). |
-| `slides/`, `report/` | Final slide deck and PDF report (added at the end). |
+| [`slides/`](slides/) | Slide assets (QR codes for the demo and this repo in `slides/assets/`); the final deck goes here. |
+| `report/` | PDF report of the experiment (added at the end). |
 
 ## Reproduce
 
@@ -69,7 +71,7 @@ npm run sync-results        # copy experiment/results into web/public/data
 npm run dev                 # http://localhost:5173
 ```
 
-**Deploy to Vercel:** import the repo → set **Root Directory** to `web` → framework **Vite** (build `npm run build`, output `dist`). The site is static; no keys or environment variables needed.
+**Deploy to Vercel:** import the repo → set **Root Directory** to `web` → framework **Vite** (build `npm run build`, output `dist`). The site is static; no keys or environment variables needed. The live deployment (https://chaos-lab-psi.vercel.app/) redeploys automatically on every push to `main`.
 
 ## Ethics and safety
 All names, emails, and the SSN are **fictional**. The agent's tools only modify an in-memory Python dictionary; no real shell, email, or accounts are touched. The paper PDF is not redistributed here; see arXiv.

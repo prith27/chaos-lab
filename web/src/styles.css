@@ -358,6 +358,7 @@ ul.plain li { margin-bottom: 6px; }
 .footer-top:hover { background: #485769; }
 .footer-body { max-width: 1400px; margin: 0 auto; padding: 18px 20px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 .footer-body a { color: var(--accent-soft); }
+.footer-links { display: flex; gap: 18px; flex-wrap: wrap; }
 
 /* ---------- responsive ---------- */
 @media (max-width: 1100px) {

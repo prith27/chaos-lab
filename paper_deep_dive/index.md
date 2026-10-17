@@ -17,7 +17,8 @@ Mini-project for **CIS 7000 (Fall 2026)** on *Agents of Chaos* (Shapira, Wendler
 | [`../plan/ppt_plan.md`](../plan/ppt_plan.md) | Slide-by-slide plan for the 8-min talk (paper → critique → our experiment), **with the real results filled in**. | When building the deck. |
 | [`../plan/ui_demo_plan.md`](../plan/ui_demo_plan.md) | Experiment design, **hypotheses vs. what happened**, and the web app as built. | When explaining the experiment. |
 | [`../experiment/`](../experiment/) | The experiment code, all 960 saved transcripts, results table, charts, and `REPORT_DRAFT.md`. | To check a number or reproduce the run. |
-| [`../web/`](../web/) | The *Chaos Lab* demo app (Vite + React), deployed on Vercel. | Before demoing. |
+| [`../web/`](../web/) | The *Chaos Lab* demo app (Vite + React). **Live at <https://chaos-lab-psi.vercel.app/>**. | Before demoing. |
+| [GitHub repo](https://github.com/prith27/chaos-lab) | Everything in this folder, public. | To share or cite. |
 | [`../experiments.md`](../experiments.md) | The original brief the experiment was built from: exact prompts, conditions, scoring, models, output formats. | To see exactly what was specified before the run. |
 | [`../plan/qa_prep.md`](../plan/qa_prep.md) | Prepared answers for the ~8 min Q&A (notes for you, not slides). | Night before + during Q&A. |
 

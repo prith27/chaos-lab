@@ -76,9 +76,14 @@ export default function App() {
         </a>
         <div className="footer-body">
           <span>Replays paraphrase the paper with fictional data. Experiment tools are simulated; no real systems are touched.</span>
-          <a href={PAPER_URL} target="_blank" rel="noreferrer">
-            Read the paper ↗
-          </a>
+          <span className="footer-links">
+            <a href="https://github.com/prith27/chaos-lab" target="_blank" rel="noreferrer">
+              Code and data on GitHub ↗
+            </a>
+            <a href={PAPER_URL} target="_blank" rel="noreferrer">
+              Read the paper ↗
+            </a>
+          </span>
         </div>
       </footer>
     </div>

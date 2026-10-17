@@ -2,7 +2,7 @@
 
 **Paper:** *Agents of Chaos* (Shapira, Wendler, Yen, et al., arXiv 2026)
 **Course requirement:** a small-scale **new result** not in the paper. Ours is a **simulation that reproduces two main results and relaxes the paper's assumptions to test its proposed fixes.**
-**Deployed on:** Vercel (a static site with **results only, no live model calls**)
+**Deployed on:** Vercel at <https://chaos-lab-psi.vercel.app/> (static, **results only, no live model calls**) · code: <https://github.com/prith27/chaos-lab>
 
 **Where it's used in the talk (see `ppt_plan.md`):**
 | Tab | Slide | Time |

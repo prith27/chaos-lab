@@ -6,7 +6,18 @@
 **Deck:** **10 content slides + slide 11 (Questions)**. No appendix slides; Q&A prep lives in `plan/qa_prep.md` (notes for you, not slides).
 **Demo:** the *Chaos Lab* web app (`web/`, deployed on Vercel): **Tab 1 CS8 replay · Tab 2 CS3 replay · Tab 3 Our Experiment** (opens on *Results by model*; also *Comparison* and *Method (full details)*). Everything is precomputed; nothing runs live.
 **Division of labour:** the **slides explain** (critique, method, conclusion) and the **demo shows the evidence** (replays, results, transcripts). The demo's *Method* tab is only for people browsing the site later; don't open it in the talk.
-**Visuals:** PNGs in `paper_deep_dive/diagrams/`. **Red** = failure, **green** = held up, **yellow** = owner/authority.
+**Visuals:** PNGs in `paper_deep_dive/diagrams/`; QR codes in `slides/assets/`. **Red** = failure, **green** = held up, **yellow** = owner/authority.
+
+**Links**
+| What | Link | Used on |
+|---|---|---|
+| Live demo | <https://chaos-lab-psi.vercel.app/> | slides 5, 9, 11 |
+| Demo: CS8 replay | <https://chaos-lab-psi.vercel.app/#cs8> | slide 5 |
+| Demo: CS3 replay | <https://chaos-lab-psi.vercel.app/#cs3> | slide 5 |
+| Demo: our results | <https://chaos-lab-psi.vercel.app/#exp> | slide 9 |
+| GitHub repo | <https://github.com/prith27/chaos-lab> | slide 11 |
+| Paper | <https://arxiv.org/abs/2602.20021> | slides 1, 11 |
+| QR code images | `slides/assets/qr_demo.png`, `slides/assets/qr_repo.png` | slide 11 (demo QR also on slide 9) |
 
 ---
 
@@ -86,7 +97,7 @@
 
 ## Slide 5: Two failures up close (1:15) 🎬 Demo Tabs 1–2
 
-**Visual:** left, the CS8 sequence diagram; right, the CS3 flow. Then switch to the demo app.
+**Visual:** left, the CS8 sequence diagram; right, the CS3 flow. Then switch to the browser tab already open on <https://chaos-lab-psi.vercel.app/#cs8>, step through with →, then click *The SSN Leak* tab (or open `#cs3`).
 
 **CS8: Fake owner (Tab 1, ~40s)**
 - The attacker renames themselves to "Chris," the owner's name
@@ -146,7 +157,7 @@
 
 **This slide is a placeholder: switch to the browser here.**
 
-**On slide:** title "Results: live demo" + the demo URL, and a **small backup copy of the table below** (or a screenshot of the *Comparison* tab) in case the demo fails. Have the browser already open on *Our Experiment → Results by model, GPT-5 nano* before the talk starts.
+**On slide:** title "Results: live demo", the URL `chaos-lab-psi.vercel.app`, a small `qr_demo.png`, and a **small backup copy of the table below** (or a screenshot of the *Comparison* tab) in case the demo fails. Have the browser already open on *Our Experiment → Results by model, GPT-5 nano* before the talk starts.
 
 **Demo (~60s):**
 1. *Results by model*, **GPT-5 nano** (the default): point at the CS8 bars (0% · 100% · 0% · 100%) and click **Replay a trial** on *8B New DM* to show a real takeover.
@@ -183,7 +194,7 @@
 
 ## Slide 11: Questions? (~8 min)
 
-**On slide:** **Questions?** · paper arXiv 2602.20021 · demo link (Vercel) + QR code · GitHub repo link + QR code
+**On slide:** **Questions?** · two QR codes side by side, each with a caption: **Live demo**, chaos-lab-psi.vercel.app (`slides/assets/qr_demo.png`), and **Code and data**, github.com/prith27/chaos-lab (`slides/assets/qr_repo.png`) · small footer: paper arXiv 2602.20021
 **Leave this slide up during Q&A.** If someone asks to see evidence, switch to the demo: *Comparison* (click any cell for its 30 transcripts) or *Method (full details)*. Prepared answers are in `plan/qa_prep.md`.
 **Discussion prompt if the room is quiet:** *"Would you let an agent manage your email? Which check would you want enforced in code rather than in the prompt?"*
 
@@ -197,4 +208,29 @@
 - [ ] Native pipeline + conditions table (slide 8)
 - [ ] Backup table or *Comparison* screenshot on the slide 9 placeholder; charts also in `experiment/results/charts/cs8.png`, `cs3.png`
 - [ ] Screenshot fallbacks for Tabs 1–3 (slides 5 and 9)
-- [ ] QR codes: Vercel demo + GitHub repo (slide 11)
+- [x] QR codes: `slides/assets/qr_demo.png` and `slides/assets/qr_repo.png` (slide 11; demo QR also on slide 9)
+
+---
+
+## Presentation-day steps (demo checklist)
+
+**Night before**
+1. Open <https://chaos-lab-psi.vercel.app/> on the presentation laptop and click through all three tabs once so everything is cached.
+2. Scan both QR codes on the slide with your phone to confirm they open the right pages.
+3. Take the backup screenshots (CS8 takeover step, CS3 leak step, *Comparison* table) and paste them on slides 5 and 9.
+
+**Before you start (2 minutes)**
+1. Browser tab 1: <https://chaos-lab-psi.vercel.app/#cs8>, at step 1 of the replay.
+2. Browser tab 2: <https://chaos-lab-psi.vercel.app/#exp>, on *Results by model* with GPT-5 nano selected (the default).
+3. Zoom the browser to about 125% so the back row can read it. Close other tabs and turn off notifications.
+4. Slides in presenter mode; know your shortcut for switching windows (Cmd+Tab).
+
+**During the talk**
+| When | Switch to | Do | Back to slide |
+|---|---|---|---|
+| Slide 5 | Browser tab 1 (`#cs8`) | Press → through the 7 steps (stop on the takeover step), then click *The SSN Leak* and step to the leak | Slide 6 |
+| Slide 9 | Browser tab 2 (`#exp`) | GPT-5 nano bars → *Replay a trial* on 8B → dropdown to Llama 3.2 → *Comparison* tab | Slide 10 |
+| Q&A (slide 11) | Browser tab 2 | Only if asked: click a cell in *Comparison* to show its 30 transcripts | stay on slide 11 |
+
+**If something fails:** stay on the slides and use the backup screenshots and the backup table on slide 9. Nothing in the talk depends on the live site.
+

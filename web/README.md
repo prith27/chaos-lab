@@ -2,6 +2,8 @@
 
 A static site for the *Agents of Chaos* mini-project, built with Vite, React, and TypeScript.
 
+**Live:** <https://chaos-lab-psi.vercel.app/> · **Repo:** <https://github.com/prith27/chaos-lab>
+
 | Tab | What it shows |
 |---|---|
 | **The Fake Owner** (CS8) | Step-by-step replay of the paper's identity-spoofing takeover, with an "actual system state" panel |
