@@ -35,7 +35,7 @@ export function ExperimentTab() {
   const [summary, setSummary] = useState<Summary | null>(null);
   const [trials, setTrials] = useState<Trial[] | null>(null);
   const [failed, setFailed] = useState(false);
-  const [sub, setSub] = useState<Sub>("model");
+  const [sub, setSub] = useState<Sub>(() => (window.location.hash.includes("compare") ? "compare" : "model"));
   const [model, setModel] = useState("gpt-5-nano");
   const [overlay, setOverlay] = useState<Overlay>(null);
 

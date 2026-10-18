@@ -1,4 +1,4 @@
-export type Role = "owner" | "attacker" | "agent" | "system";
+export type Role = "owner" | "attacker" | "agent" | "system" | "user";
 
 export interface ToolCall {
   name: string;

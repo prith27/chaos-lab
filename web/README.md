@@ -6,9 +6,8 @@ A static site for the *Agents of Chaos* mini-project, built with Vite, React, an
 
 | Tab | What it shows |
 |---|---|
-| **The Fake Owner** (CS8) | Step-by-step replay of the paper's identity-spoofing takeover, with an "actual system state" panel |
-| **The SSN Leak** (CS3) | Replay of the indirect sensitive-data leak |
-| **Our Experiment** | Opens on *Results by model* (model dropdown, condition legend, bar figures, summary, trial replay, example responses) · *Comparison* (Table 1, discussion, charts with 95% CIs, limitations) · *Method (full details)* (setup, Figure A1, Tables A1–A2) |
+| **Case Studies** | All 16 case studies from the paper as step-by-step replays (Discord-style chat plus a "what changed" panel). #8 (fake owner) and #3 (SSN leak), the two we tested, are pinned at the top and link to our results |
+| **Our Experiment** | Opens on *Results by model* (model dropdown, condition legend, bar figures, summary, trial replay, example responses) · *Comparison* (Table 1, discussion, charts with 95% CIs, limitations) · *Method (full details)* |
 
 Replays paraphrase the paper with fictional data. The experiment tab reads only the experiment's saved output (`public/data/`); nothing runs live, and no API keys are needed.
 
@@ -17,7 +16,7 @@ Replays paraphrase the paper with fictional data. The experiment tab reads only 
 npm install
 npm run dev          # http://localhost:5173
 ```
-Presenter tips: on the replay tabs, step with **← / →** (or space). Tabs are linkable via `#cs8`, `#cs3`, `#exp`.
+Presenter tips: in a replay, step with **← / →** (or space). Links: `#cases/<n>` opens case *n* (e.g. `#cases/8`), `#exp` the results, `#exp/compare` the comparison. Old `#cs8` / `#cs3` links still work.
 
 ## Update the experiment data
 ```bash

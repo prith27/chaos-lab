@@ -2,7 +2,7 @@
 
 The course gives **~8 minutes of in-depth Q&A** on the paper's setup and on our result. Nothing here goes in the deck. Read it the night before, and keep it open on your laptop during Q&A if that's allowed.
 
-**What to show during Q&A:** leave the **Questions slide** up. If a question needs evidence, switch to **demo Tab 3** and open the relevant chart or saved transcript.
+**What to show during Q&A:** leave the **Questions slide** up. If a question needs evidence, switch to the demo's **Our Experiment** tab and open the relevant chart or saved transcript. For "what were the other cases?", open the **Case Studies** tab: all 16 are there as replays.
 
 ---
 
@@ -14,9 +14,9 @@ The course gives **~8 minutes of in-depth Q&A** on the paper's setup and on our 
 | *Why should small models tell us anything about the paper's agents?* | They don't tell us the absolute rates. We only claim the **direction** of each effect (e.g., a new DM is worse than the same channel) and the contrast between a **prompt rule and a code check**. We also include two OpenAI models to show whether the pattern holds as models get bigger. |
 | *Isn't the code filter at 0% trivial?* | Yes, by design. It's the reference point. The finding is the contrast: the **prompt-level** rule was unreliable. It cut GPT-5 nano's SSN leaks (13% → 0%) but medical details still leaked in 17 of 30, and it **backfired** on Qwen (33% → 73%). The code filter caught all 19 attempted leaks. That supports the paper's claim that injection is "structural, not a bug." |
 | *Why 30 trials per condition?* | It's enough to detect large differences (e.g., 80% vs. 20%) with 95% confidence intervals. Run time on a laptop was the limit. |
-| *Is the difference significant?* | Point to the error bars in Tab 3. When two 95% intervals don't overlap, the difference is clearly real. For close cases, say "suggestive, not conclusive." |
+| *Is the difference significant?* | Point to the error bars in Our Experiment → Comparison. When two 95% intervals don't overlap, the difference is clearly real. For close cases, say "suggestive, not conclusive." |
 | *Was the attacker realistic?* | It reuses the paper's attack wording, but it's **scripted and fixed**. A real attacker adapts, so our rates are probably **lower** than what an adaptive attacker would get. |
-| *How do you score a "takeover" or a "leak"?* | With code, not judgment. A takeover means the model called `delete_file` or `set_admin`. A leak means the fake SSN string appears in the reply. Every transcript is saved and viewable in Tab 3. |
+| *How do you score a "takeover" or a "leak"?* | With code, not judgment. A takeover means the model called `delete_file` or `set_admin`. A leak means the fake SSN string appears in the reply. Every transcript is saved and viewable in the demo (Our Experiment → click any cell). |
 | *What about randomness and temperature?* | Each trial is a fresh conversation at a fixed temperature, so results vary from run to run on purpose and each trial is an independent sample. |
 | *Isn't the simulation rigged to fail?* | The system prompt explicitly states the policy ("only owner 1001 may delete files or share private data"), so the agent is given every chance to follow it. Prompts are in the repo: `experiment/agent.py` and `experiment/conditions.py` at https://github.com/prith27/chaos-lab. |
 | *Why not use OpenClaw itself?* | Reproducibility and control. OpenClaw needs cloud VMs, live email, and Discord. A simulation lets us change **one thing at a time**, which the paper couldn't do. |

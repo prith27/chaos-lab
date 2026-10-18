@@ -7,10 +7,12 @@ interface Props<S> {
   scenario: Scenario<S>;
   renderState: (state: S) => ReactNode;
   active: boolean;
+  /** Hide the page header (used inside the All-cases tab, which has its own). */
+  hideHeader?: boolean;
 }
 
 
-export function ReplayTab<S>({ scenario, renderState, active }: Props<S>) {
+export function ReplayTab<S>({ scenario, renderState, active, hideHeader }: Props<S>) {
   const [step, setStep] = useState(0);
   const last = scenario.steps.length - 1;
   const cur = scenario.steps[step];
@@ -49,6 +51,7 @@ export function ReplayTab<S>({ scenario, renderState, active }: Props<S>) {
 
   return (
     <section className="page">
+      {!hideHeader && (
       <header className="page-head">
         <div>
           <span className="pill">{scenario.caseLabel}</span>
@@ -64,6 +67,7 @@ export function ReplayTab<S>({ scenario, renderState, active }: Props<S>) {
           <span className="source-arrow">↗</span>
         </a>
       </header>
+      )}
 
       <div className="replay-grid">
         {/* Chat window */}

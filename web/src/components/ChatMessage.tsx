@@ -6,13 +6,14 @@ const AVATAR: Record<ChatMsg["role"], string> = {
   attacker: "😈",
   agent: "🤖",
   system: "⚙️",
+  user: "🙂",
 };
 
 export function ChatMessage({ msg }: { msg: ChatMsg }) {
   if (msg.role === "system") {
     return (
       <div className="msg-system fade-in">
-        <span className="msg-system-icon">✏️</span> {msg.text}
+        {msg.name === "Discord" ? <span className="msg-system-icon">✏️</span> : <span className="msg-system-from">{msg.name}:</span>} {msg.text}
       </div>
     );
   }

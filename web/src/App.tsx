@@ -1,43 +1,55 @@
 import { useEffect, useState } from "react";
-import { cs8 } from "./data/cs8";
-import { cs3 } from "./data/cs3";
-import { ReplayTab } from "./components/ReplayTab";
-import { Cs3StatePanel, Cs8StatePanel } from "./components/StatePanels";
 import { ExperimentTab } from "./components/ExperimentTab";
+import { CasesTab } from "./components/CasesTab";
 import { PAPER_URL } from "./constants";
 
-type TabId = "cs8" | "cs3" | "exp";
+type TabId = "cases" | "exp";
 
 const TABS: { id: TabId; label: string; sub: string }[] = [
-  { id: "cs8", label: "The Fake Owner", sub: "Case Study #8" },
-  { id: "cs3", label: "The SSN Leak", sub: "Case Study #3" },
+  { id: "cases", label: "Case Studies", sub: "From the paper" },
   { id: "exp", label: "Our Experiment", sub: "Results" },
 ];
 
-function tabFromHash(): TabId {
+const DEFAULT_CASE = 8;
+
+/**
+ * Routes: #cases/<n> (a case study), #exp or #exp/compare (results).
+ * Old links #cs8 and #cs3 still work and open those cases.
+ */
+function parseHash(): { tab: TabId; caseN: number } {
   const h = window.location.hash.replace("#", "");
-  return h === "cs3" || h === "exp" ? h : "cs8";
+  if (h.startsWith("exp")) return { tab: "exp", caseN: DEFAULT_CASE };
+  const legacy = h.match(/^cs(\d+)$/);
+  const routed = h.match(/^cases\/(\d+)$/);
+  const n = Number((legacy ?? routed)?.[1] ?? DEFAULT_CASE);
+  return { tab: "cases", caseN: n >= 1 && n <= 16 ? n : DEFAULT_CASE };
 }
 
 export default function App() {
-  const [tab, setTab] = useState<TabId>(tabFromHash);
+  const [route, setRoute] = useState(parseHash);
 
   useEffect(() => {
-    const onHash = () => setTab(tabFromHash());
+    const onHash = () => setRoute(parseHash());
     window.addEventListener("hashchange", onHash);
     return () => window.removeEventListener("hashchange", onHash);
   }, []);
 
-  const go = (t: TabId) => {
-    window.location.hash = t;
-    setTab(t);
+  const go = (hash: string) => {
+    window.location.hash = hash;
+    setRoute(parseHash());
     window.scrollTo({ top: 0 });
+  };
+
+  // Keep the URL in sync with the selected case without adding history entries.
+  const selectCase = (n: number) => {
+    window.history.replaceState(null, "", `#cases/${n}`);
+    setRoute({ tab: "cases", caseN: n });
   };
 
   return (
     <div className="app">
       <nav className="nav-top">
-        <div className="brand" onClick={() => go("cs8")}>
+        <div className="brand" onClick={() => go(`cases/${DEFAULT_CASE}`)}>
           <span className="brand-mark">◉</span>
           <span className="brand-name">
             chaos<span className="brand-accent">lab</span>
@@ -53,7 +65,11 @@ export default function App() {
       </nav>
       <nav className="nav-sub">
         {TABS.map((t) => (
-          <button key={t.id} className={`nav-tab ${tab === t.id ? "active" : ""}`} onClick={() => go(t.id)}>
+          <button
+            key={t.id}
+            className={`nav-tab ${route.tab === t.id ? "active" : ""}`}
+            onClick={() => go(t.id === "cases" ? `cases/${route.caseN}` : "exp")}
+          >
             <span className="nav-tab-sub">{t.sub}</span>
             <span className="nav-tab-label">{t.label}</span>
           </button>
@@ -61,17 +77,14 @@ export default function App() {
       </nav>
 
       <main className="main">
-        <div hidden={tab !== "cs8"}>
-          <ReplayTab scenario={cs8} active={tab === "cs8"} renderState={(s) => <Cs8StatePanel state={s} />} />
+        <div hidden={route.tab !== "cases"}>
+          <CasesTab active={route.tab === "cases"} caseN={route.caseN} onSelect={selectCase} onOpenResults={() => go("exp/compare")} />
         </div>
-        <div hidden={tab !== "cs3"}>
-          <ReplayTab scenario={cs3} active={tab === "cs3"} renderState={(s) => <Cs3StatePanel state={s} />} />
-        </div>
-        {tab === "exp" && <ExperimentTab />}
+        {route.tab === "exp" && <ExperimentTab />}
       </main>
 
       <footer className="footer">
-        <a href="#cs8" onClick={() => window.scrollTo({ top: 0 })} className="footer-top">
+        <a href="#top" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0 }); }} className="footer-top">
           Back to top
         </a>
         <div className="footer-body">
