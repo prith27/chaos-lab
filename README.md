@@ -4,7 +4,7 @@
 
 Replication and extension of Shapira, Wendler, Yen, et al., *Agents of Chaos* ([arXiv:2602.20021](https://arxiv.org/abs/2602.20021), 2026).
 
-**Slides:** [`presentation.pdf`](presentation.pdf) · **Interactive demo:** <https://chaos-lab-psi.vercel.app>
+**Slides:** [`presentation.pdf`](presentation.pdf) ([`.pptx`](presentation.pptx), with speaker notes) · **Interactive demo:** <https://chaos-lab-psi.vercel.app>
 
 ---
 
