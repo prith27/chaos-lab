@@ -4,7 +4,7 @@
 
 Replication and extension of Shapira, Wendler, Yen, et al., *Agents of Chaos* ([arXiv:2602.20021](https://arxiv.org/abs/2602.20021), 2026).
 
-**Slides:** [`presentation.pdf`](presentation.pdf) ([`.pptx`](presentation.pptx), with speaker notes) · **Interactive demo:** <https://chaos-lab-psi.vercel.app>
+**Materials:** slides ([PDF](presentation.pdf), [PPTX with speaker notes](presentation.pptx)) · [companion website](https://chaos-lab-psi.vercel.app) with step-by-step replays of all 16 case studies and every trial transcript
 
 ---
 
@@ -104,7 +104,7 @@ Before filtering, the 3D outputs would have disclosed the SSN in 1/30 (Llama), 1
 
 ## 5. Limitations
 
-- **Model scale.** The paper's agents ran on Kimi K2.5 and Claude Opus 4.6. We evaluate smaller, lower-cost models, so the absolute rates may not transfer to frontier models.
+- **Model scale.** The paper's agents ran on Kimi K2.5 and Claude Opus 4.6. We evaluate smaller models, so the absolute rates may not transfer to frontier models.
 - **Simulation fidelity.** We use a single system prompt, four toy tools, and a scripted single-message attacker rather than the OpenClaw runtime and adaptive, multi-turn adversaries.
 - **Sample size.** With *n* = 30, confidence intervals span up to ±18 percentage points, and small differences are not resolvable.
 - **Confounds in CS3.** Llama 3.2 3B rarely produced a usable summary, so its low leak rate reflects low capability rather than caution. GPT-5 mini never read the mailbox, so it cannot discriminate between the mitigations.
@@ -123,7 +123,7 @@ cp .env.example .env        # add OPENAI_API_KEY (git-ignored)
 .venv/bin/python analyze.py
 ```
 
-The run is checkpointed per trial and resumes automatically. The reported data were collected on 2026-10-17. OpenAI usage was about 380k input and 274k output tokens, at a cost of US$0.37. Software versions, the pilot log, and further details are in [`experiment/README.md`](experiment/README.md) and [`experiment/REPORT_DRAFT.md`](experiment/REPORT_DRAFT.md).
+The run is checkpointed per trial and resumes automatically. The reported data were collected on 2026-10-17. Software versions, the pilot log, and further details are in [`experiment/README.md`](experiment/README.md) and [`experiment/REPORT_DRAFT.md`](experiment/REPORT_DRAFT.md).
 
 ## 7. Repository structure
 
@@ -131,10 +131,11 @@ The run is checkpointed per trial and resumes automatically. The reported data w
 |---|---|
 | [`experiment/`](experiment/) | Simulation, conditions, scoring, and analysis code |
 | [`experiment/results/`](experiment/results/) | All 960 transcripts (`trials.jsonl`), summary statistics (`summary.json`), tables, and figures; pilot and smoke-test data in subfolders |
-| [`experiments.md`](experiments.md) | Pre-registered experimental specification |
+| [`experiments.md`](experiments.md) | Experimental specification, written before data collection |
 | [`paper_deep_dive/`](paper_deep_dive/) | Notes on and critique of the original paper |
-| [`plan/`](plan/), [`slides/`](slides/) | Presentation materials |
-| [`web/`](web/) | Interactive visualization of the case studies and results |
+| [`presentation.pdf`](presentation.pdf), [`presentation.pptx`](presentation.pptx) | Class presentation (11 slides) |
+| [`plan/`](plan/), [`slides/`](slides/) | Presentation planning notes and slide assets |
+| [`web/`](web/) | Companion website: replays of all 16 case studies from the paper, and the results of this study with every trial transcript |
 
 ## 8. Ethics
 
