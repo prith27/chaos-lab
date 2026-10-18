@@ -82,12 +82,12 @@ My own assessment, going beyond the limitations the paper states. Each point cit
 
 | Critique | What would fix it | Do we address it? |
 |---|---|---|
-| 1. No denominators | Repeated trials → attack-success **rates** | ✅ **Yes**: 30+ trials per condition |
-| 2. Model vs. framework confound | Ablate one factor at a time | ✅ **Partly**: same harness, vary one assumption |
-| 3. Unbalanced models | Same attacks on several models | ✅ **Partly**: 2–3 local models, identical prompts |
-| 4. Post-hoc failure definition | Pre-specified policy + automatic scoring | ✅ **Yes**: the policy is written into the system prompt and scored by code |
-| 8. Fixes untested | Implement the defense, measure the change | ✅ **Yes**: the ID-check and trust-carryover conditions |
-| 10. Not reproducible | Release a harness | ✅ **Yes**: our code runs on a laptop |
-| 5, 6, 7, 9, 11, 12 | Design and reporting choices | 🗣️ Discuss on the critique slide / in Q&A |
+| 1. No denominators | Repeated trials → attack-success **rates** | ✅ **Yes**: 30 trials per condition, 960 in total, with 95% Wilson intervals |
+| 2. Model vs. framework confound | Change one factor at a time | ✅ **Partly**: one fixed setup in which we vary channel, ID visibility, memory, prompt rule, or code filter. We use a simulation, not OpenClaw itself |
+| 3. Unbalanced models | Run the same attacks on several models | ✅ **Partly**: identical prompts on 4 models (GPT-5 mini, GPT-5 nano, Qwen 2.5 3B, Llama 3.2 3B), but not the paper's Kimi or Claude |
+| 4. Post-hoc failure definition | Pre-specified policy plus automatic scoring | ✅ **Yes**: the policy is written into the system prompt, and code scores the result (tool calls for CS8, SSN regex for CS3) |
+| 8. Fixes untested | Implement the defense and measure the change | ✅ **Yes**: 8C tests the paper's immutable-ID fix and 8D a memory warning; 3C tests a prompt rule and 3D a code filter |
+| 10. Not reproducible | Release a harness | ✅ **Yes**: the code and all 960 transcripts are public |
+| 5, 6, 7, 9, 11, 12 | Design and reporting choices | 🗣️ Discussed on the critique slide and in Q&A |
 
-> **Our own caveat (say it before someone asks):** we use **small local models** (3B–7B) in a **simulated** environment, not Kimi or Claude Opus inside OpenClaw. Our rates show **how the failure behaves when conditions change**, not the real-world rates for the paper's agents.
+> **Our own caveat (say it before someone asks):** we use **small and mid-size models** (GPT-5 mini and nano through the API; Qwen 2.5 3B and Llama 3.2 3B locally) in a **simulated** environment, not Kimi or Claude Opus inside OpenClaw. Our rates show **how the failure behaves when conditions change**, not the real-world rates for the paper's agents.
